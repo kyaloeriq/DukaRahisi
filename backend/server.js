@@ -11,9 +11,13 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/yourDBName', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch((err) => console.error(err));
+mongoose.connect('mongodb://localhost:27017/mydatabase')
+    .then(() => {
+        console.log('MongoDB connected successfully');
+    })
+    .catch((error) => {
+        console.error('MongoDB connection error:', error);
+    });
 
 // Use routes
 app.use('/api/users', userRoutes);
