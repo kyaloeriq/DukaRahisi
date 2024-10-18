@@ -4,8 +4,13 @@ const router = express.Router();
 
 // Get all products
 router.get('/', async (req, res) => {
-    const products = await Product.find();
-    res.json(products);
+    try {
+        const products = await Product.find();  // Fetch all products from MongoDB
+        res.json(products);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
 });
 
 // Add a new product
