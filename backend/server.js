@@ -7,7 +7,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'https://6374-3-227-252-133.ngrok-free.app/.ngrok.io' }));
 app.use(express.json());
 
 // Connect to MongoDB
@@ -25,6 +25,6 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 
 const PORT = process.env.PORT || 5000;
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Server running on port ${port}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`);
 });
